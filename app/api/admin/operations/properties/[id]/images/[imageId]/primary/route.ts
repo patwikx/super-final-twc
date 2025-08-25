@@ -4,10 +4,10 @@ import { prisma } from '@/lib/prisma' // Adjust import path as needed
 // PATCH - Set image as primary for a specific context
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string; imageId: string } }
+ { params }: { params: Promise<{ id: string; imageId: string }> }
 ) {
   try {
-    const { id, imageId } = params
+  const { id, imageId } = await params
     const { context } = await request.json()
 
     if (!context) {

@@ -8,10 +8,10 @@ import { uuid } from 'zod'
 // GET - Fetch all images for a property
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+ { params }: { params: Promise<{ id: string; }> }
 ) {
   try {
-    const { id } = params
+    const { id } = await params
 
     // Find property first
     const property = await prisma.businessUnit.findFirst({
@@ -57,10 +57,10 @@ export async function GET(
 // POST - Upload new image for property
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+{ params }: { params: Promise<{ id: string; }> }
 ) {
   try {
-    const { id } = params
+    const { id } = await params
 
     // Find property first
     const property = await prisma.businessUnit.findFirst({

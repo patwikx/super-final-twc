@@ -6,10 +6,10 @@ import { join } from 'path'
 // DELETE - Remove image from property
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string; imageId: string } }
+  { params }: { params: Promise<{ id: string; imageId: string }> }
 ) {
   try {
-    const { id, imageId } = params
+    const { id, imageId } = await params
 
     // Find property first
     const property = await prisma.businessUnit.findFirst({
