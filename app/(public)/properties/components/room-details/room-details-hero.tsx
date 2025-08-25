@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, Star, Users, Bed, Maximize, Wifi, Coffee, Bath, Tv } from "lucide-react"
+import { ArrowLeft, Star, Users, Bed, Maximize, Wifi, Coffee, Bath, Tv, Calendar, CreditCard } from "lucide-react"
 import { motion } from "framer-motion"
 import { BusinessUnit, RoomType_Model, RoomTypeImage, Image as PrismaImage } from "@prisma/client"
 import Link from "next/link"
@@ -59,6 +59,20 @@ export function RoomDetailsHero({ property, roomType }: RoomDetailsHeroProps) {
           <Link href={`/properties/${property.slug}/rooms`} className="flex items-center gap-2">
             <ArrowLeft className="h-4 w-4" />
             Back to Rooms
+          </Link>
+        </Button>
+      </div>
+
+      {/* Book Now Button - Top Right */}
+      <div className="absolute top-8 right-8 z-20">
+        <Button
+          asChild
+          size="lg"
+          className="bg-blue-600 hover:bg-blue-700 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 font-semibold"
+        >
+          <Link href={`/properties/${property.slug}/rooms/${roomType.id}/book`} className="flex items-center gap-2">
+            <Calendar className="h-4 w-4" />
+            Book Now
           </Link>
         </Button>
       </div>
@@ -136,7 +150,7 @@ export function RoomDetailsHero({ property, roomType }: RoomDetailsHeroProps) {
             </div>
 
             {/* Quick Amenities */}
-            <div className="flex items-center gap-6 text-white/80">
+            <div className="flex items-center gap-6 text-white/80 mb-8">
               <div className="flex items-center gap-2">
                 <Wifi className="h-5 w-5 text-blue-400" />
                 <span className="text-sm">Free WiFi</span>
@@ -152,6 +166,27 @@ export function RoomDetailsHero({ property, roomType }: RoomDetailsHeroProps) {
               <div className="flex items-center gap-2">
                 <Tv className="h-5 w-5 text-green-400" />
                 <span className="text-sm">Smart TV</span>
+              </div>
+            </div>
+
+            {/* CTA Section */}
+            <div className="flex items-center gap-4">
+              <Button
+                asChild
+                size="lg"
+                className="bg-blue-600 hover:bg-blue-700 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 font-semibold"
+              >
+                <Link href={`/properties/${property.slug}/rooms/${roomType.id}/book`} className="flex items-center gap-2">
+                  <Calendar className="h-4 w-4" />
+                  Reserve Now
+                </Link>
+              </Button>
+              
+              <div className="text-white/80 text-sm">
+                <div className="flex items-center gap-1">
+                  <CreditCard className="h-4 w-4" />
+                  <span>Secure booking • Free cancellation</span>
+                </div>
               </div>
             </div>
           </motion.div>

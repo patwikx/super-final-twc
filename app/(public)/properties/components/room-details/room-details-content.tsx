@@ -4,7 +4,7 @@
 import { Users, CheckCircle, Wifi, Coffee, Bath, Tv, Car, Utensils, Dumbbell, Waves, Shield, Music, Gamepad2, Wind, Clock, CreditCard, AlertCircle, LucideIcon, Phone, Mail, Facebook, Instagram, Twitter } from "lucide-react"
 import { motion } from "framer-motion"
 import { RoomType_Model, RoomTypeAmenity, Amenity, BusinessUnit, RoomTypeImage, Image as PrismaImage } from "@prisma/client"
-import { RoomGallery } from "./room-gallery"
+//import { RoomGallery } from "./room-gallery"
 
 interface RoomDetailsContentProps {
   roomType: RoomType_Model & {
@@ -308,13 +308,13 @@ export function RoomDetailsContent({ roomType, property }: RoomDetailsContentPro
         </motion.section>
       </div>
 
-      {/* Room Gallery - Adjusted for new layout */}
+      {/* Room Gallery - Adjusted for new layout 
       <div className="lg:flex lg:gap-8 -mt-10">
         <div className="lg:w-[calc(500px+512px+32px)] mt-[-20px]">
           <RoomGallery roomType={roomType} />
         </div>
       </div>
-
+*/}
     </div>
   )
 }

@@ -92,7 +92,7 @@ export default async function RoomDetailsPage({ params }: RoomDetailsPageProps) 
         <RoomGallery roomType={roomType} />
       </div>
 */}
-      {/* Booking Widget - if you want to add it later as a floating/sticky element
+      {/* Booking Widget - if you want to add it later as a floating/sticky element 
       <div className="fixed bottom-8 right-8 z-50">
         <RoomBookingWidget property={property} roomType={roomType} />
       </div>
