@@ -184,7 +184,7 @@ export function PropertyDetailsForm({ property }: PropertyDetailsFormProps) {
       
       const validatedData = updatePropertySchema.parse(dataToValidate)
       
-      const response = await axios.patch(`/api/properties/${property.slug}`, validatedData)
+      const response = await axios.patch(`/api/admin/operations/properties/${property.slug}`, validatedData)
       
       if (response.status === 200) {
         setUpdateSuccess(true)
@@ -220,7 +220,7 @@ export function PropertyDetailsForm({ property }: PropertyDetailsFormProps) {
       formData.append('context', context)
       formData.append('businessUnitId', property.id)
       
-      const response = await axios.post(`/api/properties/${property.id}/images`, formData, {
+      const response = await axios.post(`/api/admin/operations/properties/${property.id}/images`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -240,7 +240,7 @@ export function PropertyDetailsForm({ property }: PropertyDetailsFormProps) {
 
   const refreshImages = async () => {
     try {
-      const response = await axios.get(`/api/properties/${property.id}/images`)
+      const response = await axios.get(`/api/admin/operations/properties/${property.id}/images`)
       setImages(response.data)
     } catch (error) {
       console.error('Failed to refresh images:', error)
@@ -249,7 +249,7 @@ export function PropertyDetailsForm({ property }: PropertyDetailsFormProps) {
 
   const handleDeleteImage = async (imageId: string) => {
     try {
-      await axios.delete(`/api/properties/${property.id}/images/${imageId}`)
+      await axios.delete(`/api/admin/operations/properties/${property.id}/images/${imageId}`)
       await refreshImages()
     } catch (error) {
       console.error('Failed to delete image:', error)
@@ -259,7 +259,7 @@ export function PropertyDetailsForm({ property }: PropertyDetailsFormProps) {
 
   const handleSetPrimaryImage = async (imageId: string, context: string) => {
     try {
-      await axios.patch(`/api/properties/${property.id}/images/${imageId}/primary`, {
+      await axios.patch(`/api/admin/operations/properties/${property.id}/images/${imageId}/primary`, {
         context
       })
       await refreshImages()

@@ -256,6 +256,8 @@ enum OfferType {
   ACTIVITY
   LOYALTY
   PROMO_CODE
+  GROUP // Add this
+  CORPORATE // Add this
 }
 
 enum OfferStatus {
@@ -264,6 +266,7 @@ enum OfferStatus {
   EXPIRED
   PAUSED
   SCHEDULED
+  INACTIVE
 }
 
 enum RestaurantType {
@@ -2035,6 +2038,7 @@ model SpecialOffer {
   validFrom       DateTime
   validTo         DateTime
   bookingDeadline DateTime?
+  blackoutDates   DateTime[]
 
   stayPeriodFrom DateTime?
   stayPeriodTo   DateTime?
@@ -2078,8 +2082,10 @@ model SpecialOffer {
   clickCount   Int @default(0)
   bookingCount Int @default(0)
 
-  businessUnit BusinessUnit?       @relation("BusinessUnitOffers", fields: [businessUnitId], references: [id])
-  images       SpecialOfferImage[]
+  businessUnit              BusinessUnit?       @relation("BusinessUnitOffers", fields: [businessUnitId], references: [id])
+  combinableWithOtherOffers Boolean             @default(false)
+  autoApply                 Boolean             @default(false)
+  images                    SpecialOfferImage[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
