@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Prisma, PrismaClient } from '@prisma/client'
 import { hash } from 'bcryptjs'
 
@@ -24,6 +25,7 @@ async function main() {
   console.log('✅ Created admin user')
 
   // Create default role and permissions
+   
   const adminRole = await prisma.role.create({
     data: {
       name: 'super_admin',

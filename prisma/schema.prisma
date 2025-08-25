@@ -91,6 +91,8 @@ enum ReservationSource {
   TRAVEL_AGENT
   CORPORATE
   GROUP_BOOKING
+  ONLINE
+  AGENT
 }
 
 // Enhanced Payment Enums
@@ -356,6 +358,27 @@ enum FeedbackPriority {
   MEDIUM
   HIGH
   CRITICAL
+}
+
+enum GuestType {
+  INDIVIDUAL
+  CORPORATE
+  GROUP
+  VIP
+  WALK_IN
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHERS
+}
+
+enum GuestStatus {
+  ACTIVE
+  INACTIVE
+  BLACKLISTED
+  VIP
 }
 
 // =============================================================================
@@ -914,6 +937,7 @@ model Guest {
   nationality String?
 
   passportNumber String?
+  passportExpiry DateTime?
   idNumber       String?
   idType         String?
 
@@ -923,10 +947,14 @@ model Guest {
   country    String?
   postalCode String?
 
-  vipStatus     Boolean @default(false)
+  vipStatus     Boolean   @default(false)
   loyaltyNumber String?
   preferences   Json?
   notes         String?
+  firstStayDate DateTime?
+  lastStayDate  DateTime?
+  blacklistedAt DateTime?
+  totalSpent    Decimal?
 
   marketingOptIn Boolean @default(false)
   source         String?

@@ -37,6 +37,7 @@ import Link from "next/link"
 
 export function AdminHeader() {
   const pathname = usePathname()
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchOpen, setSearchOpen] = useState(false)
 
   const generateBreadcrumbs = () => {

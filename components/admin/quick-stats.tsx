@@ -3,7 +3,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { Badge } from "@/components/ui/badge"
-import { TrendingUp, Users, Building, Star, Activity } from "lucide-react"
+import { Building, Star, Activity } from "lucide-react"
 
 export function QuickStats() {
   const propertyStats = [
