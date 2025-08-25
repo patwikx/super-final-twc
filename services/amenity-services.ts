@@ -1,4 +1,5 @@
 // services/amenityService.ts
+
 import apiClient from '@/lib/axios';
 import { Amenity, RoomTypeAmenity } from '@prisma/client';
 
